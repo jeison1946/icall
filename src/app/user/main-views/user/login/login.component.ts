@@ -12,14 +12,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   public form: FormGroup;  
-  user?: SocialUser;
 
   constructor(private socialAuthService: SocialAuthService, private router: Router) {
     this.form = new FormGroup({});
   }
 
   ngOnInit(): void {
-    document.body.className = 'login-page';
     this.authSession();
   }
 

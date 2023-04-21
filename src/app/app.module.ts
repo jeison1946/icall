@@ -4,17 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavBarComponent } from './shared/components/nav-bar/nav-bar.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, NgbCollapseModule ],
+  declarations: [AppComponent, NavBarComponent], 
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

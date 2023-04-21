@@ -1,0 +1,32 @@
+@import '../../../../assets/scss/settings/colors';
+.list-group{
+  border-radius: inherit;
+  .list-group-item{
+    color: #ffffff;
+    border: none;
+    background-color: transparent;
+    border-radius: 1ch;
+
+    &:hover,
+    &.active{
+      background-color: $four_color;
+    }
+  }
+}
+
+.input-search{
+  padding: 1rem;
+  input {
+    background-color: $four_color;
+    border: none;
+    padding: 0.5rem 1rem;
+    color: $white;
+
+    &:hover,
+    &.active{
+      border: none;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+}

@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { LoginGuard } from 'src/app/shared/guards/login.guard';
 
 
 
 @NgModule({
-  declarations: [
-    HomeComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: '',
-        canActivate: [LoginGuard],
-        component: HomeComponent
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       },
       {
         path: 'chats/:id',

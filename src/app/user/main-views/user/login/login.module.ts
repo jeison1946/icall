@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { GoogleLoginProvider, SocialLoginModule } from '@abacritt/angularx-social-login';
-import { LoginGuard } from '../../../../shared/guards/login.guard';
+import { SessionGuard } from '../../../../shared/guards/session.guard';
 //google
 
 
@@ -21,7 +21,8 @@ import { LoginGuard } from '../../../../shared/guards/login.guard';
     RouterModule.forChild([
       {
         path: '',
-        component: LoginComponent
+        component: LoginComponent,
+        canLoad: [SessionGuard]
       },
     ]),
     MatInputModule,
