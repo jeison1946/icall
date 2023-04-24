@@ -1,14 +1,24 @@
 <div class="chat-component">
   <div class="list-message">  
-    <div class="item-message received">
-      <div class="text-content"><span>Hola como estas?</span></div>
-    </div>
-    <div class="item-message send">
-      <div class="text-content"><span>Hola bien bien</span></div>
+    <div *ngFor="let item of listChatsItems"
+      class="item-message"
+      [class]="item.user._id == idUser ? 'send' : 'received'"
+    >
+      <div class="text-content">{{item.message}}</div>
     </div>
   </div>
   <div class="text-area-message">
-    <input type="text" placeholder="Your message">
-    <i class="bi bi-send-fill"></i>
+    
+
+    <form class="message-form">
+      <input 
+      type="text" 
+      [(ngModel)]="messageInput" 
+      (keyup.enter)="sendMessage(messageInput)"
+      [ngModelOptions]="{ standalone: true }"
+      placeholder="Your message"
+      >
+      <i class="bi bi-send-fill"></i>
+    </form>
   </div>
 </div>

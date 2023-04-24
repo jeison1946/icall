@@ -1,21 +1,30 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+  styleUrls: ['./nav-bar.component.scss'],
+  standalone: true,
+  imports: [
+    CommonModule,
+  ]
 })
 export class NavBarComponent {
 
-  public userCurrent:any;
-  name = 'Angular';
-  public isCollapsed = true;
+  @Output() itemSelect = new EventEmitter<any>();
+
+  @Input() listItems: any[] = [];
+
+  public currentItem: string = 'chats'
+
 
   ngOnInit(): void {
-    this.getCurrentUser();
+    
   }
 
-  getCurrentUser() {
-    this.userCurrent = JSON.parse(atob(localStorage.getItem("user-session") || "{}"));
+  onItemSelected(item: any) {
+    this.itemSelect.emit(item);
+    this.currentItem = item.id;
   }
 }

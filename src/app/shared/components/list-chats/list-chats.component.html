@@ -1,10 +1,35 @@
-<div class="input-search">
-  <input type="search" class="form-control" placeholder="Search">
-</div>
+<form class="example-form">
+  <mat-form-field class="input_text-mat" appearance="fill" color="accent">
+    <mat-label>Buscar usuario
+    </mat-label>
+<!-- #docregion input -->
+    <input type="text"
+           placeholder="example@example.com"
+           aria-label="Buscar usuarios"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option.email" (click)="selectUser(option)">
+        {{option.email}}
+        <mat-icon>input</mat-icon>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
 
 <div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action">The current link item</a>
-  <a href="#" class="list-group-item list-group-item-action">A second link item</a>
-  <a href="#" class="list-group-item list-group-item-action">A third link item</a>
-  <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+  <a
+    *ngFor="let item of listUserItems"
+    class="list-group-item list-group-item-action" 
+    (click)="onChatSelected(item)" 
+    [class]="currentChat == item._id ? 'active' : ''"
+  >
+    <span
+    *ngFor="let user of item.users"
+    >
+      {{user.name}}
+    </span>
+  </a>
 </div>

@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginGuard } from 'src/app/shared/guards/login.guard';
+import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginGuard } from '../shared/guards/login.guard';
 
 
 
@@ -12,17 +14,13 @@ import { LoginGuard } from 'src/app/shared/guards/login.guard';
     RouterModule.forChild([
       {
         path: '',
-        loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
-      },
-      {
-        path: 'chats/:id',
-        loadChildren: () => import('./chats/chats.module').then(m => m.ChatsModule),
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
         path: 'login',
         loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
       }
     ]),
-  ],
+  ]
 })
-export class UserModule { }
+export class MainModule { }

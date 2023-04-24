@@ -4,6 +4,7 @@
   box-sizing: border-box;
 }
 
+span,
 a,
 h1,
 p {
@@ -22,7 +23,7 @@ body {
   background-color: $second_color;
   display: block;
   height: 100vh;
-  border-radius: 2ch 0 0 2ch;
+  //border-radius: 2ch 0 0 2ch;
   padding: 2em 0;
 }
 

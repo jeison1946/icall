@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-
 import { LoginComponent } from './login.component';
 import { RouterModule } from '@angular/router';
-//Material
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { GoogleLoginProvider, SocialLoginModule } from '@abacritt/angularx-social-login';
-import { SessionGuard } from '../../../../shared/guards/session.guard';
-//google
+import { ReactiveFormsModule } from '@angular/forms';
+import { SessionGuard } from 'src/app/shared/guards/session.guard';
+import { UserService } from 'src/app/shared/services/user/user.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -28,7 +28,8 @@ import { SessionGuard } from '../../../../shared/guards/session.guard';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    HttpClientModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',
@@ -43,7 +44,9 @@ import { SessionGuard } from '../../../../shared/guards/session.guard';
           })
         }
       ]
-    }
-  }],
+    },
+  },
+  UserService
+  ],
 })
 export class LoginModule { }

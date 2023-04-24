@@ -1,0 +1,27 @@
+<div class="container-fluid p-0">
+  <div class="row">
+    <div class="col p-0">
+      <div class="content">
+        <div class="container-fluid height-100">
+          <div class="row height-100">
+            <div class="col-3">
+              <app-list-chats 
+              (chatSelect)="getChatSelect($event)"
+              [idUser]="currentUser._id"
+              ></app-list-chats>
+            </div>
+            <div class="col-9 d-flex flex-column">
+              <h1>{{title}}</h1>
+              <app-internal-chat 
+              *ngIf="(chatSelect | keyvalue)?.length" 
+              [chat]="chatSelect"  
+              class="mt-auto"
+              [idUser]="currentUser._id"
+              ></app-internal-chat>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
