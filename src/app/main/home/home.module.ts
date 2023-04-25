@@ -17,8 +17,9 @@ import { ChatsComponent } from './chats/chats.component';
 import { NavBarComponent } from 'src/app/shared/components/nav-bar/nav-bar.component';
 import { NewChatComponent } from './new-chat/new-chat.component';
 import { ListUserService } from 'src/app/shared/services/list-user/list-user.service';
+import { environment } from '@icall/environments';
 
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
+const config: SocketIoConfig = { url: environment.apiWebSockets, options: {} };
 
 
 @NgModule({

@@ -1,4 +1,5 @@
 export const environment = {
-  production: 'false',
-  apiUrl: 'https://valuable-luck-act.glitch.me/',
+  production: false,
+  apiUrl: 'http://localhost:3000/',
+  apiWebSockets: 'http://localhost:3000'
 };
