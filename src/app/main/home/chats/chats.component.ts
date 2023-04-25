@@ -31,4 +31,8 @@ export class ChatsComponent {
     this.currentUser = this.utilities.getLocalStorage('user-session', true);
   }
 
+  callbakcReturn() {
+    this.chatSelect = {};
+  }
+
 }

@@ -1,16 +1,16 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-1">
-      <app-nav-bar [listItems]="navItems" (itemSelect)="loadComponent($event)"></app-nav-bar>
+<div class="fluid-container d-flex">
+  <div class="vertical">
+    <app-nav-bar [listItems]="navItems" (itemSelect)="loadComponent($event)"></app-nav-bar>
+  </div>
+  <div class="vertical-full">
+    <div *ngIf="!selectedComponent.id" class="height-100">
+      <app-chats class="height-100"></app-chats>
     </div>
-    <div class="col-11">
-      <div *ngIf="!selectedComponent.id">
-        <app-chats></app-chats>
-      </div>
-      <div [ngSwitch]="selectedComponent.id">
-        <app-chats *ngSwitchCase="'chats'"></app-chats>
-        <app-new-chat *ngSwitchCase="'new-chat'"></app-new-chat>
-      </div>
+    <div [ngSwitch]="selectedComponent.id">
+      <app-chats *ngSwitchCase="'chats'"></app-chats>
+      <app-new-chat *ngSwitchCase="'new-chat'"></app-new-chat>
     </div>
   </div>
 </div>
+  
+

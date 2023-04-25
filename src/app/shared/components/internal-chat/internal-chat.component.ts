@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MessageService } from '../../services/message/message.service';
 import { Socket } from 'ngx-socket-io';
 import { FormControl, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
@@ -14,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
   ]
 })
 export class InternalChatComponent implements OnChanges{
@@ -29,6 +31,8 @@ export class InternalChatComponent implements OnChanges{
 
   messageInput: string = '';
 
+  @ViewChild('nombreDelContenedor') contenedor: ElementRef | undefined;
+
   constructor(private message: MessageService, private socket: Socket) {
   }
 
@@ -42,6 +46,7 @@ export class InternalChatComponent implements OnChanges{
 
   ngOnChanges(changes: SimpleChanges): void {
     this.listMessagesChat();
+    this.scroolTo(500);
   }
 
   listMessagesChat() {
@@ -53,7 +58,6 @@ export class InternalChatComponent implements OnChanges{
   }
 
   sendMessage(event: string) {
-
     const newMessage = {
       chat: this.chat._id,
       user: this.idUser,
@@ -65,5 +69,15 @@ export class InternalChatComponent implements OnChanges{
         this.messageInput = '';
       }
     });
+
+    this.scroolTo();
+  }
+
+  scroolTo(time: number = 200) {
+    setTimeout(() => {
+      const container = this.contenedor?.nativeElement;
+      container.scrollTop = container.scrollHeight;
+    }, time);
+    
   }
 }

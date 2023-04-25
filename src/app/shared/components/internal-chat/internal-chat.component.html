@@ -1,10 +1,12 @@
 <div class="chat-component">
-  <div class="list-message">  
-    <div *ngFor="let item of listChatsItems"
+  <div class="scroolitemcontainer">  
+    <div class="list-message" #nombreDelContenedor>
+      <div *ngFor="let item of listChatsItems"
       class="item-message"
       [class]="item.user._id == idUser ? 'send' : 'received'"
     >
       <div class="text-content">{{item.message}}</div>
+    </div>
     </div>
   </div>
   <div class="text-area-message">
@@ -18,7 +20,7 @@
       [ngModelOptions]="{ standalone: true }"
       placeholder="Your message"
       >
-      <i class="bi bi-send-fill"></i>
+      <mat-icon class="icon-send" color="accent" (click)="sendMessage(messageInput)">send</mat-icon>
     </form>
   </div>
 </div>

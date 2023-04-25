@@ -18,6 +18,7 @@ import { NavBarComponent } from 'src/app/shared/components/nav-bar/nav-bar.compo
 import { NewChatComponent } from './new-chat/new-chat.component';
 import { ListUserService } from 'src/app/shared/services/list-user/list-user.service';
 import { environment } from '@icall/environments';
+import { MatIconModule } from '@angular/material/icon';
 
 const config: SocketIoConfig = { url: environment.apiWebSockets, options: {} };
 
@@ -44,6 +45,7 @@ const config: SocketIoConfig = { url: environment.apiWebSockets, options: {} };
     ListChatsComponent,
     InternalChatComponent,
     NavBarComponent,
+    MatIconModule
   ],
   providers:[
     ChatService,
