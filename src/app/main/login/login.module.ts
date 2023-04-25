@@ -38,7 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
       providers: [
         {
           id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider('178464696864-i0f4el4n9miufh64hantcdgdphh9g391.apps.googleusercontent.com', {
+          provider: new GoogleLoginProvider('711389757233-2qma15neni4dcdu3mlkdt8crlgr0foup.apps.googleusercontent.com', {
             scopes: ['email']
             // hosted_domain: "nivelics.co",
           })
