@@ -54,8 +54,8 @@
               "outputHashing": "all",
               "fileReplacements": [
                 {
-                  "replace": "src/shared/lib-tool/lib/environments/environment.ts",
-                  "with": "src/shared/lib-tool/lib/environments/environment.prod.ts"
+                  "replace": "src/app/shared/lib-tool/src/lib/environments/environment.ts",
+                  "with": "src/app/shared/lib-tool/src/lib/environments/environment.prod.ts"
                 }
                ]
             },
