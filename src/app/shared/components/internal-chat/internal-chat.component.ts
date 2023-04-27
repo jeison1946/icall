@@ -41,18 +41,19 @@ export class InternalChatComponent implements OnChanges{
   }
 
   ngOnInit(): void {
-    /* this.socket.on('message', (data: any) => {  
+    this.socket.on('message', (data: any) => {  
       if(data.chat == this.chat._id) {
-        this.listChatsItems.push(data);
-        //this.pushData(data);
-        //this.scroolTo();
+        //this.listChatsItems.push(data);
+        this.pushInfo(data);
+        this.scroolTo();
       }
-    }); */
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.listMessagesChat();
-    //this.scroolTo(500);
+    this.scroolTo(500);
+    
   }
 
   listMessagesChat() {
@@ -83,6 +84,23 @@ export class InternalChatComponent implements OnChanges{
       const container = this.contenedor?.nativeElement;
       container.scrollTop = container.scrollHeight;
     }, time);
-    
+  }
+
+  pushInfo(data: any) {
+    const dateCurrent = formatDate(this.today, 'YYYY-MM-d', 'en-GB');
+    const posicion = this.listChatsItems.findIndex(elemento => elemento._id === dateCurrent);
+    console.log(posicion)
+    if(posicion && posicion !== -1) {
+      this.listChatsItems[posicion]?.messages?.push(data)
+    } else {
+      const newMessage = {
+        _id: dateCurrent,
+        messages:[
+          data
+        ]
+      }
+      console.log(newMessage)
+      this.listChatsItems.push(newMessage)
+    }
   }
 }
