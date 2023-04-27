@@ -19,11 +19,39 @@
     overflow-y: scroll;
     top: 0;
     right: 0;
-    left: 10px;
+    left: 0;
     bottom: 0;
     padding: 0 10px;
     height: 100%;
     margin-top: var(--bs-gutter-y);
+  }
+
+  .date-chat{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    margin: 10px 0;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background-color: #484848;
+    }
+    span{
+      position: relative;
+      z-index: 1;
+      display: block;
+      box-shadow: 0 1px 0.5px rgba(11,20,26,.13);
+      border-radius: 15px;
+      border: 1px solid #484848;
+      padding: 5px 10px;
+      background-color: $four_color;
+    }
   }
 
   .text-area-message{
@@ -43,6 +71,12 @@
       border-radius: 1ch;
       margin-top: 0.5em;
     }
+
+    .date-item{
+      text-align: right;
+      font-size: 10px;
+      line-height: 12px;
+    }
   }
 
   .received{
@@ -51,6 +85,10 @@
 
   .send{
     align-items: flex-end;
+
+    .text-content{
+      background-color: $third_color;
+    }
   }
 }
 

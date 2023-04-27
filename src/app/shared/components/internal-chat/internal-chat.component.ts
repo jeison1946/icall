@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { MessageService } from '../../services/message/message.service';
 import { Socket } from 'ngx-socket-io';
-import { FormControl, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { CommonModule, formatDate } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -29,6 +29,10 @@ export class InternalChatComponent implements OnChanges{
 
   public statusMessage: string = '';
 
+  public today: Date = new Date;
+  public yesterday: Date = new Date(this.today.getTime() - (24 * 60 * 60 * 1000));
+  
+
   messageInput: string = '';
 
   @ViewChild('nombreDelContenedor') contenedor: ElementRef | undefined;
@@ -37,22 +41,25 @@ export class InternalChatComponent implements OnChanges{
   }
 
   ngOnInit(): void {
-    this.socket.on('message', (data: any) => {  
+    /* this.socket.on('message', (data: any) => {  
       if(data.chat == this.chat._id) {
-        this.listChatsItems.push(data)
+        this.listChatsItems.push(data);
+        //this.pushData(data);
+        //this.scroolTo();
       }
-    });
+    }); */
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.listMessagesChat();
-    this.scroolTo(500);
+    //this.scroolTo(500);
   }
 
   listMessagesChat() {
     this.message.getMessageByIdChat(this.chat._id).subscribe(response => {
-      if (!response.error) {
+      if (!response.error && response.message) {
         this.listChatsItems = response.message;
+        console.log(response.message)
       }
     });
   }
@@ -69,8 +76,6 @@ export class InternalChatComponent implements OnChanges{
         this.messageInput = '';
       }
     });
-
-    this.scroolTo();
   }
 
   scroolTo(time: number = 200) {
