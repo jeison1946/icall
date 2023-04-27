@@ -60,7 +60,6 @@ export class InternalChatComponent implements OnChanges{
     this.message.getMessageByIdChat(this.chat._id).subscribe(response => {
       if (!response.error && response.message) {
         this.listChatsItems = response.message;
-        console.log(response.message)
       }
     });
   }
@@ -99,7 +98,7 @@ export class InternalChatComponent implements OnChanges{
           data
         ]
       }
-      console.log(newMessage)
+      
       this.listChatsItems.push(newMessage)
     }
   }
