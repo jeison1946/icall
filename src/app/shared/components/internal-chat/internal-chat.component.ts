@@ -31,6 +31,8 @@ export class InternalChatComponent implements OnChanges{
 
   public today: Date = new Date;
   public yesterday: Date = new Date(this.today.getTime() - (24 * 60 * 60 * 1000));
+
+  private notificationSound = new Audio('../../../../assets/media/icall.mp3');
   
 
   messageInput: string = '';
@@ -43,7 +45,9 @@ export class InternalChatComponent implements OnChanges{
   ngOnInit(): void {
     this.socket.on('message', (data: any) => {  
       if(data.chat == this.chat._id) {
-        //this.listChatsItems.push(data);
+        if(data.user != this.idUser) {
+          this.notificationSound.play();
+        }
         this.pushInfo(data);
         this.scroolTo();
       }
@@ -89,16 +93,16 @@ export class InternalChatComponent implements OnChanges{
     const dateCurrent = formatDate(this.today, 'YYYY-MM-d', 'en-GB');
     const posicion = this.listChatsItems.findIndex(elemento => elemento._id === dateCurrent);
     console.log(posicion)
-    if(posicion && posicion !== -1) {
+    if(posicion !== -1) {
       this.listChatsItems[posicion]?.messages?.push(data)
     } else {
+      console.log('else')
       const newMessage = {
         _id: dateCurrent,
         messages:[
           data
         ]
-      }
-      
+      } 
       this.listChatsItems.push(newMessage)
     }
   }

@@ -24,7 +24,7 @@ html, body {
   /* mobile viewport bug fix */
   display: flex;
 
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100svh;
 
   @media (max-width: 992px) {
     flex-direction: column;
