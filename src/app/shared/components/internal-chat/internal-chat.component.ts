@@ -32,7 +32,7 @@ export class InternalChatComponent implements OnChanges{
   public today: Date = new Date;
   public yesterday: Date = new Date(this.today.getTime() - (24 * 60 * 60 * 1000));
 
-  private notificationSound = new Audio('/assets/media/icall.mp3');
+  private notificationSound = new Audio('../../../../assets/media/icall.mp3');
   
 
   messageInput: string = '';
