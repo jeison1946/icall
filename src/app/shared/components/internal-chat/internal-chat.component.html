@@ -1,17 +1,44 @@
 <div class="chat-component">
   <div class="scroolitemcontainer">  
     <div class="list-message" #nombreDelContenedor>
+      <div 
+      *ngFor="let item of listChatsItems"
+      >
+        <div class="date-chat">
+          <span>
+            <ng-container *ngIf="(item._id | date) == (today | date); else thenBlock1">
+              Hoy
+            </ng-container>
+            <ng-template #thenBlock1>
+              <ng-container *ngIf="(item._id | date) == (yesterday | date); else thenBlock2">Ayer</ng-container>
+            </ng-template>
+            <ng-template #thenBlock2>{{item._id | date}}</ng-template>
+          </span>
+        </div>
+        <div 
+        *ngFor="let msn of item.messages"
+        class="item-message"
+        [class]="msn.user == idUser ? 'send' : 'received'"
+        >
+          <div class="text-content">
+            <span>{{msn.message}}</span>
+            <div class="date-item"><span>{{msn.date | date : 'shortTime'}}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="list-message" #nombreDelContenedor>
       <div *ngFor="let item of listChatsItems"
       class="item-message"
       [class]="item.user._id == idUser ? 'send' : 'received'"
     >
-      <div class="text-content">{{item.message}}</div>
-    </div>
-    </div>
+      <div class="text-content">
+        <span>{{item.message}}</span>
+        <div class="date-item"><span>{{item.date | date : 'shortTime'}}</span></div>
+      </div>
+    </div> -->
   </div>
   <div class="text-area-message">
-    
-
     <form class="message-form">
       <input 
       type="text" 
