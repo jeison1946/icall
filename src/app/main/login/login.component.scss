@@ -1,8 +1,32 @@
-.main-center {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.page-login{
+  height: 100svh;
+}
+
+.block-title{
+  margin: auto;
+  text-align: center;
+
+  h1 {
+    font-size: 40px;
+    font-weight: 700px;
+    line-height: 48px;
+  }
+}
+
+.container-title-return {
+
+  .blue-icon{
+    color: #377DFF;
+    margin-right: 5px;
+  }
+  
+
+  .return{
+    display: flex;
+    align-items: center;
+    color: #377DFF;
+    text-decoration: none;
+  }
 }
 
 .form-signin {
@@ -10,6 +34,14 @@
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
+  text-align: center;
+
+  .google{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
 }
 .form-signin .checkbox {
   font-weight: 400;

@@ -1,0 +1,21 @@
+@import '../../../../assets/scss/settings/colors';
+
+.icon-img{
+  position: relative;
+  display: inline-block;
+
+  img {
+    display: block;
+    border-radius: 25px;
+  }
+
+  .status{
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: $green;
+    border-radius: 25px;
+    bottom: 0;
+    right: 0;
+  }
+}

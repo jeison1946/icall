@@ -19,6 +19,8 @@ import { NewChatComponent } from './new-chat/new-chat.component';
 import { ListUserService } from 'src/app/shared/services/list-user/list-user.service';
 import { environment } from '@icall/environments';
 import { MatIconModule } from '@angular/material/icon';
+import { ProfileGeneralComponent } from 'src/app/shared/components/profile-general/profile-general.component';
+import { SearchNewUserComponent } from 'src/app/shared/components/search-new-user/search-new-user.component';
 
 const config: SocketIoConfig = { url: environment.apiWebSockets, options: {} };
 
@@ -33,6 +35,7 @@ const config: SocketIoConfig = { url: environment.apiWebSockets, options: {} };
     //Modules
     CommonModule,
     FormsModule,
+    MatIconModule,
     SocketIoModule.forRoot(config),
     RouterModule.forChild([
       {
@@ -45,7 +48,7 @@ const config: SocketIoConfig = { url: environment.apiWebSockets, options: {} };
     ListChatsComponent,
     InternalChatComponent,
     NavBarComponent,
-    MatIconModule
+    ProfileGeneralComponent
   ],
   providers:[
     ChatService,

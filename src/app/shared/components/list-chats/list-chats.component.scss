@@ -2,32 +2,33 @@
 .list-group{
   border-radius: inherit;
   .list-group-item{
-    color: #ffffff;
     border: none;
     background-color: transparent;
     border-radius: 1ch;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray;
 
-    &:hover,
-    &.active{
-      background-color: $four_color;
+    &:last-child {
+      border-bottom: none;
     }
   }
-}
 
-.input-search{
-  padding: 1rem;
-  input {
-    background-color: $four_color;
-    border: none;
-    padding: 0.5rem 1rem;
-    color: $white;
+  .container-block{
+    display: flex;
+    align-items: center;
 
-    &:hover,
-    &.active{
-      border: none;
-      border-color: transparent;
-      box-shadow: none;
+    img {
+      border-radius: 25px;
+      display: block;
+    }
+
+    .text-user{
+      margin-left: 5px;
+    }
+
+    .icon-send{
+      margin-left: auto;
     }
   }
 }

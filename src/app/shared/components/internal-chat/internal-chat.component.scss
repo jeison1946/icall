@@ -40,7 +40,7 @@
       display: block;
       height: 1px;
       width: 100%;
-      background-color: #484848;
+      background-color: $gray;
     }
     span{
       position: relative;
@@ -48,9 +48,9 @@
       display: block;
       box-shadow: 0 1px 0.5px rgba(11,20,26,.13);
       border-radius: 15px;
-      border: 1px solid #484848;
+      border: 1px solid $gray;
       padding: 5px 10px;
-      background-color: $four_color;
+      background-color: $gray;
     }
   }
 
@@ -65,9 +65,8 @@
     flex-direction: column;
 
     .text-content{
-      background-color: $four_color;
+      background-color: $gray;
       padding: 0.5em;
-      color: $white;
       border-radius: 1ch;
       margin-top: 0.5em;
     }
@@ -87,7 +86,13 @@
     align-items: flex-end;
 
     .text-content{
-      background-color: $third_color;
+      background-color: $blue;
+
+
+      span {
+        color: $white;
+      }
+      
     }
   }
 }
@@ -101,7 +106,7 @@
     justify-content: center;
     position: relative;
     z-index: 2;
-    background-color: $second_color;
+    //background-color: $second_color;
   }
   input {
     display: block;
@@ -113,7 +118,7 @@
     background-color: transparent;
     outline: none;
     border: none;
-    color: $white;
+    //color: $white;
 
     &:focus-visible {
       border-color: transparent;

@@ -21,6 +21,7 @@
 }
 
 .title-header{
+  padding-bottom: 10px;
 
   .icon-return {
     display: none;
@@ -36,4 +37,14 @@
     margin: 0;
     margin-left: 10px;
   }
+}
+
+.fixed-block{
+  background-color: white;
+}
+
+.container-search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

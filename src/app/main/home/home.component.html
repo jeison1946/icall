@@ -1,4 +1,4 @@
-<div class="fluid-container d-flex">
+<!-- <div class="fluid-container d-flex">
   <div class="vertical">
     <app-nav-bar [listItems]="navItems" (itemSelect)="loadComponent($event)"></app-nav-bar>
   </div>
@@ -11,6 +11,11 @@
       <app-new-chat *ngSwitchCase="'new-chat'"></app-new-chat>
     </div>
   </div>
+</div> -->
+<div class="fluid-container">
+  <div class="main-content">
+
+      <app-chats *ngIf="!selectedComponent.id" class="height-100 d-block"></app-chats>
+  </div>
 </div>
-  
 

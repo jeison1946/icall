@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SessionGuard } from 'src/app/shared/guards/session.guard';
 import { UserService } from 'src/app/shared/services/user/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [{
     provide: 'SocialAuthServiceConfig',

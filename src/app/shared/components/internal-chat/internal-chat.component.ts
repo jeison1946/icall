@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule, formatDate } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { environment } from '@icall/environments';
 
 
 @Component({
@@ -32,7 +33,7 @@ export class InternalChatComponent implements OnChanges{
   public today: Date = new Date;
   public yesterday: Date = new Date(this.today.getTime() - (24 * 60 * 60 * 1000));
 
-  private notificationSound = new Audio('../../../../assets/media/icall.mp3');
+  private notificationSound = new Audio( environment.files+'/media/icall.mp3');
   
 
   messageInput: string = '';
@@ -96,7 +97,6 @@ export class InternalChatComponent implements OnChanges{
     if(posicion !== -1) {
       this.listChatsItems[posicion]?.messages?.push(data)
     } else {
-      console.log('else')
       const newMessage = {
         _id: dateCurrent,
         messages:[

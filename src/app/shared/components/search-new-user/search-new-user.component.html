@@ -1,0 +1,32 @@
+<!-- <form class="example-form">
+  <mat-form-field class="input_text-mat" appearance="fill" color="accent">
+    <mat-label>Buscar usuario
+    </mat-label>
+    <input type="text"
+           placeholder="example@example.com"
+           aria-label="Buscar usuarios"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option.email" (click)="selectUser(option)">
+        {{option.email}}
+        <mat-icon>input</mat-icon>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form> -->
+<form class="form-search">
+  <input 
+    type="text"
+    placeholder="example@example.com"
+    aria-label="Buscar usuarios"
+    matInput
+    [formControl]="myControl"
+  >
+</form>
+
+<div class="item-options" *ngFor="let option of options">
+  <button class="event-send" (click)="selectUser(option)">{{option.email}}<mat-icon class="icon-send">input</mat-icon></button>
+</div>

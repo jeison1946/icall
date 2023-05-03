@@ -8,6 +8,8 @@ import { environment } from '@icall/environments';
 })
 export class UserService {
   private urlBase = environment.apiUrl;
+
+  public fileBlob: File | undefined;
   
 
   constructor(
@@ -21,14 +23,19 @@ export class UserService {
     return this.httpClient.get<any>(url, {params: queryParams});
   }
 
-  createUserIcall(data: any) {
-    let body = new HttpParams({
-      fromObject: {
-        name: data.name,
-        email: data.email
-      }
-    });
+  createUserIcall(data: any, file:Blob) {
+    const formData = new FormData();
+    if(file) {
+      formData.append('imageFile', file, 'fileuser.jpg');
+    }
+    formData.append('email', data.email);
+    formData.append('name', data.name);
+
     let url = `${this.urlBase}user`;
-    return this.httpClient.post<any>(url, body);
+    return this.httpClient.post<any>(url, formData);
+  }
+
+  createFile (url: string) {
+    return this.httpClient.get(url, { responseType: 'blob' });
   }
 }

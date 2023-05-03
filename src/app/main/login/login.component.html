@@ -1,20 +1,26 @@
-<div class="main-center text-center">
-  <form class="form-signin" novalidate [formGroup]="form">
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-
-    <label for="inputEmail" class="sr-only">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+<div class="page-login">
+  <div class="main-content">
+    <div class="container-title-return">
+      <a class="return"><mat-icon class="blue-icon">keyboard_backspace</mat-icon> Atras</a>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-
-    <asl-google-signin-button type='standard' size='medium' shape='circle' class="google"></asl-google-signin-button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-  </form>
+    <div class="block-title"><h1 class="h3 mb-3 font-weight-normal">Icall</h1></div>
+    <form class="form-signin" novalidate [formGroup]="form">
+      <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
+  
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+  
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  
+      <asl-google-signin-button type='standard' size='medium' shape='circle' class="google"></asl-google-signin-button>
+      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+  </div>
 </div>
