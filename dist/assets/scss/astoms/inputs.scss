@@ -9,3 +9,17 @@
 .input_text-mat {
   width: 100%;
 }
+
+input {
+  border: none;
+  border-radius: 8px;
+  padding: 14px 20px;
+  outline: none;
+  background-color: $gray;
+  width: 100%;
+
+  &:focus-visible,
+  &:focus{
+    border: none;
+  }
+}
