@@ -1,0 +1,16 @@
+<input type="file" [hidden]="true" #fileInput (change)="uploadFile($event)">
+<div *ngIf="imagepreview" class="image-content">
+  <img [src]="imagepreview" alt="Preview">
+
+  <form class="message-form">
+    <div class="container-message">
+      <div class="text-message">
+        <input 
+        type="text" 
+        placeholder="Your message"
+        >
+        <mat-icon class="icon-send" color="accent">send</mat-icon>
+      </div>
+    </div>
+  </form>
+</div>

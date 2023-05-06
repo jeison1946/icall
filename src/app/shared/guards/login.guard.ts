@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
+import { UserService } from '../services/user/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Observable } from 'rxjs';
 export class LoginGuard implements CanActivate {
   constructor(
     private router: Router,
+    private userService: UserService
   ) { }
 
   canActivate(
@@ -19,10 +21,15 @@ export class LoginGuard implements CanActivate {
 
 
   isLoggedIn(): any {
-
     const token = this.getLocalStorage("token-session");
     if(token) {
-      return true;
+      this.userService.statusUser(atob(token)).pipe(
+        catchError(error => {
+          return this.router.navigateByUrl('/login');
+        })
+      ).subscribe(response => {
+        return true;
+      });
     }
     else {
       return this.router.navigateByUrl('/login');

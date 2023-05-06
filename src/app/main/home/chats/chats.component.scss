@@ -1,46 +1,31 @@
-.show-content{
-  @media (max-width: 768px) {
-    display: none;
-
-    &.active {
-      display: block;
-    }
-  }
-}
-
+@import '../../../../assets/scss/settings/colors';
 .content-chat{
   flex-direction: column;
   justify-content: space-between;
   display: flex;
-  @media (max-width: 768px) {
-    &.hidden {
-      display: none;
-    }
-    
-  }
 }
 
 .title-header{
   padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   .icon-return {
-    display: none;
-
-    @media (max-width: 768px) {
-      display: block;
-    }
+    color: $blue;
   }
-  display: flex;
+  
   h1 {
-    font-size: 18px;
-    line-height: normal;
+    font-size: 16px;
+    line-height: 19px;
     margin: 0;
     margin-left: 10px;
+    font-weight: 700;
   }
 }
 
 .fixed-block{
-  background-color: white;
+  background-color: $white;
 }
 
 .container-search{

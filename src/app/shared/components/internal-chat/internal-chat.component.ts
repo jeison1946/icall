@@ -6,6 +6,8 @@ import { CommonModule, formatDate } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { environment } from '@icall/environments';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ImageMessageComponent } from '../image-message/image-message.component';
 
 
 @Component({
@@ -40,7 +42,7 @@ export class InternalChatComponent implements OnChanges{
 
   @ViewChild('nombreDelContenedor') contenedor: ElementRef | undefined;
 
-  constructor(private message: MessageService, private socket: Socket) {
+  constructor(private message: MessageService, private socket: Socket, private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
@@ -91,9 +93,8 @@ export class InternalChatComponent implements OnChanges{
   }
 
   pushInfo(data: any) {
-    const dateCurrent = formatDate(this.today, 'YYYY-MM-d', 'en-GB');
+    const dateCurrent = formatDate(this.today, 'YYYY-MM-dd', 'en-GB');
     const posicion = this.listChatsItems.findIndex(elemento => elemento._id === dateCurrent);
-    console.log(posicion)
     if(posicion !== -1) {
       this.listChatsItems[posicion]?.messages?.push(data)
     } else {
@@ -105,5 +106,12 @@ export class InternalChatComponent implements OnChanges{
       } 
       this.listChatsItems.push(newMessage)
     }
+  }
+
+  openSearchModal() {
+    const modalRef = this.modalService.open(ImageMessageComponent, {
+      animation: false,
+      centered: true
+    });
   }
 }

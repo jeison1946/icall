@@ -40,12 +40,10 @@ export class LoginComponent {
   }
 
   createUser(user: SocialUser) {
-    this.userService.createFile(user.photoUrl).subscribe(res => {
-      this.userService.createUserIcall(user, res).subscribe(response => {
-        if (!response.error) {
-          this.setSessionLogin(user, response.message);
-        }
-      });
+    this.userService.createUserIcall(user).subscribe(response => {
+      if (!response.error) {
+        this.setSessionLogin(user, response.message);
+      }
     });
   }
 

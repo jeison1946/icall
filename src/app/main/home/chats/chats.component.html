@@ -1,26 +1,3 @@
-<!-- <div class="container-fluid height-100">
-  <div class="row height-100">
-    <div class="col-md-3 col-lg-3 show-content" [ngClass]="(chatSelect | keyvalue)?.length ? 'hidden' : 'active'">
-      <app-list-chats 
-      (chatSelect)="getChatSelect($event)"
-      [idUser]="currentUser._id"
-      ></app-list-chats>
-    </div>
-    <div class="col-md-9 col-lg-9 content-chat" [ngClass]="(chatSelect | keyvalue)?.length ? 'active' : 'hidden'">
-      <div class="title-header">
-        <mat-icon class="icon-return" color="accent" (click)="callbakcReturn()">keyboard_backspace</mat-icon>
-        <h1 class="h1">{{title}}</h1>
-      </div>
-                       
-      <app-internal-chat 
-      *ngIf="(chatSelect | keyvalue)?.length" 
-      [chat]="chatSelect"  
-      class="height-100"
-      [idUser]="currentUser._id"
-      ></app-internal-chat>
-    </div>
-  </div>
-</div> -->
 <div *ngIf="!chatSelect" class="container-search">
   <app-profile-general [user]="currentUser"></app-profile-general>
   <a (click)="openSearchModal()"><mat-icon>search</mat-icon></a>
@@ -36,7 +13,8 @@
 <div *ngIf="chatSelect" class="content-chat height-100">
   <div class="title-header">
     <mat-icon class="icon-return" color="accent" (click)="callbakcReturn()">keyboard_backspace</mat-icon>
-    <h1 class="h1">{{title}}</h1>
+    <h1 class="h1">{{userChat.name}}</h1>
+    <app-profile-general [user]="userChat"></app-profile-general>
   </div>
   <app-internal-chat
   [chat]="chatSelect" 

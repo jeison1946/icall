@@ -98,7 +98,6 @@
 }
 
 .text-area-message{
-
   .message-form {
     width: 100%;
     display: flex;
@@ -126,4 +125,26 @@
       outline: none;
     }
   }
+
+  .container-message{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5px;
+
+
+    .text-message{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-right: 10px;
+    }
+  }
+  .icon-file{
+    color: $blue;
+    
+  }
+  
 }

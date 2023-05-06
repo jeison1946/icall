@@ -26,7 +26,10 @@ import { ListUserService } from '../../services/list-user/list-user.service';
     HttpClientModule,
     MatIconModule,
   ],
-  providers: [ListUserService, ChatService]
+  providers: [
+    ListUserService, 
+    ChatService
+  ]
 })
 export class SearchNewUserComponent {
   options: any[] = [];
@@ -83,7 +86,13 @@ export class SearchNewUserComponent {
     ];
     this.listChats.createdChat(newChat).subscribe(response => {
       if (!response.error) {
-        this.onChatSelected(response.message);
+        const modelChat = {
+          _id: response.message._id,
+          users: [
+            user
+          ]
+        }
+        this.onChatSelected(modelChat);
       }
     });
   }

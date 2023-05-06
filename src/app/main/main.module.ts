@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
-import { LoginGuard } from '../shared/guards/login.guard';
 
 
 
@@ -21,6 +18,6 @@ import { LoginGuard } from '../shared/guards/login.guard';
         loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
       }
     ]),
-  ]
+  ],
 })
 export class MainModule { }

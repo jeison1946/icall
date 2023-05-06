@@ -1,0 +1,18 @@
+.image-content{
+  padding: 1rem;
+  img{
+    display: block;
+    width: 100%;
+  }
+}
+
+
+.text-message{
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+
+  .icon-send{
+    margin-left: 10px;
+  }
+}

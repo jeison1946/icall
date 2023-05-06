@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 // Environment
 import { environment } from '@icall/environments';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -23,19 +24,25 @@ export class UserService {
     return this.httpClient.get<any>(url, {params: queryParams});
   }
 
-  createUserIcall(data: any, file:Blob) {
-    const formData = new FormData();
-    if(file) {
-      formData.append('imageFile', file, 'fileuser.jpg');
-    }
-    formData.append('email', data.email);
-    formData.append('name', data.name);
+  createUserIcall(data: any) {
+    let body = new HttpParams({
+      fromObject: {
+        email: data.email,
+        name: data.name,
+        imageFile: data.photoUrl
+      }
+    });
 
     let url = `${this.urlBase}user`;
-    return this.httpClient.post<any>(url, formData);
+    return this.httpClient.post<any>(url, body);
   }
 
-  createFile (url: string) {
-    return this.httpClient.get(url, { responseType: 'blob' });
+  statusUser(idToken: string) {
+    const headers = {
+      'Authorization': `Bearer ${idToken}`
+    }
+
+    let url = `${this.urlBase}user/status`;
+    return this.httpClient.get<any>(url, {headers: headers});
   }
 }

@@ -30,14 +30,19 @@
   </div>
   <div class="text-area-message">
     <form class="message-form">
-      <input 
-      type="text" 
-      [(ngModel)]="messageInput" 
-      (keyup.enter)="sendMessage(messageInput)"
-      [ngModelOptions]="{ standalone: true }"
-      placeholder="Your message"
-      >
-      <mat-icon class="icon-send" color="accent" (click)="sendMessage(messageInput)">send</mat-icon>
+      <div class="container-message">
+        <div class="text-message">
+          <input 
+          type="text" 
+          [(ngModel)]="messageInput" 
+          (keyup.enter)="sendMessage(messageInput)"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Your message"
+          >
+          <mat-icon class="icon-send" color="accent" (click)="sendMessage(messageInput)">send</mat-icon>
+        </div>
+        <mat-icon class="icon-file" (click)="openSearchModal()">photo_library</mat-icon>
+      </div>
     </form>
   </div>
 </div>

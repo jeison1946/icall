@@ -13,7 +13,7 @@ export class ChatsComponent {
 
   public chatSelect: Object | null = null;
   public currentUser: any;
-  public title = 'iCall';
+  public userChat:any;
 
   constructor(private utilities: UtilitiesService, private modalService: NgbModal) 
   {}
@@ -25,7 +25,7 @@ export class ChatsComponent {
   async getChatSelect(event: any) {
     this.chatSelect = event;
     if(event.users) {
-      this.title = event.users[0].name
+      this.userChat = event.users[0]
     }
   }
 
@@ -49,7 +49,7 @@ export class ChatsComponent {
     );
     modalRef.componentInstance.idUser = this.currentUser._id;
     modalRef.componentInstance.chatSelect.subscribe((response: any) => {
-      this.title = response.users[0].name
+      this.userChat = response.users[0]
       this.chatSelect = response;
       modalRef.close();
     });
