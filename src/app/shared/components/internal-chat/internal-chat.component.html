@@ -22,6 +22,7 @@
         >
           <div class="text-content">
             <span>{{msn.message}}</span>
+            <div *ngIf="msn.file" class="img-content"><img [src]="msn.file" [alt]="msn.message"></div>
             <div class="date-item"><span>{{msn.date | date : 'shortTime'}}</span></div>
           </div>
         </div>
@@ -41,7 +42,8 @@
           >
           <mat-icon class="icon-send" color="accent" (click)="sendMessage(messageInput)">send</mat-icon>
         </div>
-        <mat-icon class="icon-file" (click)="openSearchModal()">photo_library</mat-icon>
+        <input type="file" [hidden]="true" #fileInput ngf ngf-keep (change)="uploadFile($event)">
+        <mat-icon class="icon-file" (click)="openManagerFile()">photo_library</mat-icon>
       </div>
     </form>
   </div>

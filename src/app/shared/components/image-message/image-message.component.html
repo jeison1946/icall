@@ -1,4 +1,3 @@
-<input type="file" [hidden]="true" #fileInput (change)="uploadFile($event)">
 <div *ngIf="imagepreview" class="image-content">
   <img [src]="imagepreview" alt="Preview">
 
@@ -7,9 +6,12 @@
       <div class="text-message">
         <input 
         type="text" 
+        [(ngModel)]="messageInput" 
+        (keyup.enter)="sendCallBack(messageInput)"
+        [ngModelOptions]="{ standalone: true }"
         placeholder="Your message"
         >
-        <mat-icon class="icon-send" color="accent">send</mat-icon>
+        <mat-icon class="icon-send" color="accent" (click)="sendCallBack(messageInput)">send</mat-icon>
       </div>
     </div>
   </form>

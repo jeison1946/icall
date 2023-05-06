@@ -41,6 +41,7 @@ export class InternalChatComponent implements OnChanges{
   messageInput: string = '';
 
   @ViewChild('nombreDelContenedor') contenedor: ElementRef | undefined;
+  @ViewChild('fileInput') fileInput: ElementRef | undefined;
 
   constructor(private message: MessageService, private socket: Socket, private modalService: NgbModal) {
   }
@@ -71,15 +72,17 @@ export class InternalChatComponent implements OnChanges{
     });
   }
 
-  sendMessage(event: string) {
+  sendMessage(event: string, image:File | boolean = false) {
     const newMessage = {
       chat: this.chat._id,
       user: this.idUser,
-      message: event
+      message: event,
+      file: image
     }
 
     this.message.sendMessage(newMessage).subscribe(response => {
       if (!response.error) {
+        console.log(response);
         this.messageInput = '';
       }
     });
@@ -108,10 +111,30 @@ export class InternalChatComponent implements OnChanges{
     }
   }
 
-  openSearchModal() {
-    const modalRef = this.modalService.open(ImageMessageComponent, {
-      animation: false,
-      centered: true
-    });
+  openManagerFile() {
+    this.fileInput?.nativeElement.click();
+  }
+
+  uploadFile(event: any) {
+    const file:File = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (reader.result) {
+        const modalRef = this.modalService.open(ImageMessageComponent, {
+          animation: false,
+          centered: true
+        });
+        modalRef.dismissed.subscribe(action => {
+          event.target.value = '';
+        })
+        modalRef.componentInstance.imagepreview = reader.result;
+        modalRef.componentInstance.callBack.subscribe((response: string) => {
+          this.sendMessage(response, file);
+          event.target.value = '';
+          modalRef.close();
+        });
+      }
+    };
+    reader.readAsDataURL(file);
   }
 }

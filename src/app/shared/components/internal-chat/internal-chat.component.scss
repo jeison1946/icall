@@ -95,6 +95,16 @@
       
     }
   }
+
+  .img-content{
+    max-width: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 5px 0;
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .text-area-message{
@@ -141,6 +151,8 @@
       width: 100%;
       margin-right: 10px;
     }
+
+    
   }
   .icon-file{
     color: $blue;
